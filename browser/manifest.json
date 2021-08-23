@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "HN Stats",
+    "version": "1.0",
+    "description": "Collects click stats on Hacker News, for training a personalized recommender.",
+    "homepage_url": "https://aimmx.xyz",
+    "icons": {
+        "48": "icons/icon-48.png"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "hnstats@aimmx.xyz",
+            "strict_min_version": "50.0"
+        }
+    },
+    "permissions": ["nativeMessaging"],
+    "content_scripts": [{
+        "matches": ["https://news.ycombinator.com/*"],
+        "js": ["content.js"]
+    }],
+    "background": {
+        "scripts": ["background.js"]
+    }
+}

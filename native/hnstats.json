@@ -1,0 +1,7 @@
+{
+    "name": "hnstats",
+    "description": "Backend for HN stats",
+    "path": "/Users/aimmx/Documents/Code/experiments/hnstats/native/hnstats.py",
+    "type": "stdio",
+    "allowed_extensions": ["hnstats@aimmx.xyz"]
+}
