@@ -3,7 +3,7 @@
     "name": "HN Stats",
     "version": "1.0",
     "description": "Collects click stats on Hacker News, for training a personalized recommender.",
-    "homepage_url": "https://aimmx.xyz",
+    "homepage_url": "https://github.com/maxklint/hnstats",
     "icons": {
         "48": "icons/icon-48.png"
     },
