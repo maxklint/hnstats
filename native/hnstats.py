@@ -31,11 +31,10 @@ def sendMessage(encodedMessage):
 con = sqlite3.connect('database')
 while True:
     msg = getMessage()
-    clicked = msg["clicked"]
-
-    # TODO: insert all stories into one table, then store ids of clicked stories in another table
-
     cur = con.cursor()
-    cur.execute("INSERT INTO 'hnstats' VALUES (?,?,?,?);",
-                (clicked["url"], clicked["title"], True, datetime.datetime.now()))
+    cur.execute("INSERT OR IGNORE INTO stories VALUES (?,?,?);",
+                (msg["url"], msg["title"], datetime.datetime.now()))
+    if msg["clicked"]:
+        cur.execute("INSERT OR IGNORE INTO clicked (id) SELECT rowid FROM stories WHERE stories.url = ?;",
+                    (msg["url"],))
     con.commit()

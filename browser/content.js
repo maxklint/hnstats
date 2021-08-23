@@ -1,14 +1,11 @@
-let links = document.body.querySelectorAll(".storylink");
-let allStories = [];
-for (let link of links) {
-    allStories.push({ "title": link.innerHTML, "url": link.getAttribute("href") });
-    link.setAttribute("target", "_blank");
+function logStory(elem, clicked) {
+    let message = { "url": elem.getAttribute("href"), "title": elem.innerHTML, "clicked": clicked };
+    browser.runtime.sendMessage(message);
 }
+
+let links = document.body.querySelectorAll(".storylink");
 for (let link of links) {
-    link.addEventListener("click", (e) => {
-        let message = {};
-        message.all = allStories;
-        message.clicked = { "title": e.target.innerHTML, "url": e.target.getAttribute("href") };
-        browser.runtime.sendMessage(message);
-    });
+    logStory(link, false);
+    link.addEventListener("click", (e) => { logStory(e.target, true); });
+    link.setAttribute("target", "_blank");
 }
